@@ -1,0 +1,32 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="16" height="16" fill="#1E1E1E"/>
+<g id="Home Page - Laptop">
+<rect width="1440" height="8211" transform="translate(-231 -6055)" fill="#F7F7F8"/>
+<g id="Pricing Section">
+<g id="Container">
+<rect x="-150" y="-381" width="1279" height="982" rx="12" fill="white"/>
+<g id="Card">
+<rect x="-99.5" y="-330.5" width="573.5" height="881" rx="11.5" fill="#FCFCFD"/>
+<rect x="-99.5" y="-330.5" width="573.5" height="881" rx="11.5" stroke="#F1F1F3"/>
+<g id="Container_2">
+<g id="Sub Container">
+<path d="M-75.5 -83C-75.5 -90.4559 -69.4558 -96.5 -62 -96.5H436.5C443.956 -96.5 450 -90.4558 450 -83V469.5H-75.5V-83Z" fill="white"/>
+<path d="M-75.5 -83C-75.5 -90.4559 -69.4558 -96.5 -62 -96.5H436.5C443.956 -96.5 450 -90.4558 450 -83V469.5H-75.5V-83Z" stroke="#F1F1F3"/>
+<g id="Items Container">
+<g id="Feature Item">
+<rect x="-15.5" y="-15.5" width="405.5" height="47" rx="5.5" stroke="#F1F1F3"/>
+<g id="Icon Container">
+<rect x="-4" y="-4" width="24" height="24" rx="4" fill="#FFF4E6"/>
+<g id="Icon">
+<path id="Vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M13.364 3.32297C13.6276 3.52379 13.6785 3.90027 13.4777 4.16385L7.07765 12.5639C6.97272 12.7016 6.81341 12.7873 6.64066 12.7989C6.46791 12.8105 6.29856 12.7469 6.17613 12.6245L2.57613 9.02449C2.34181 8.79018 2.34181 8.41028 2.57613 8.17596C2.81044 7.94165 3.19034 7.94165 3.42465 8.17596L6.5392 11.2905L12.5231 3.4366C12.724 3.17302 13.1004 3.12214 13.364 3.32297Z" fill="#262626"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>
