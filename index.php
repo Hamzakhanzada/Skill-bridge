@@ -483,25 +483,17 @@
         </div> -->
         <?php
         $courses = get_posts(['numberposts' => 10, 'post_type' => 'courses']);
-        if ($courses) {
-            foreach ($courses as $post) {
+        foreach ($courses as $course) {
         ?>
         <div class="bg-white p-4 shadow rounded-lg mb-6">
-            <?php if (has_post_thumbnail($post)) { ?>
-            <img src="<?= get_the_post_thumbnail_url($post, 'medium'); ?>"
+            <img src="<?php echo get_the_post_thumbnail_url($course, 'medium'); ?>"
                 class="w-full h-48 object-cover rounded mb-4" />
-            <?php } ?>
-
-            <h2 class="text-xl font-bold mb-3"><?= get_the_title($post); ?></h2>
-
-            <p class="text-gray-600"><?= get_the_excerpt($post); ?></p>
+            <h2 class="text-xl font-bold mb-3"><?php echo get_the_title($course); ?></h2>
+            <p class="text-gray-600"><?php echo get_the_excerpt($course); ?></p>
         </div>
-        <?php }
+        <?php
         }
         ?>
-
-
-
 
     </div>
 
