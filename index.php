@@ -153,7 +153,7 @@
 
     </div>
     <div class="container mx-auto px-4  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-[60px]">
-        <div class="col">
+        <!-- <div class="col">
             <div
                 class="flex flex-col items-end gap-[20px] md:gap-[40px] p-[20px] md:p-[40px] flex-1 rounded-[10px] bg-white-99">
                 <div class="p-5 card-height">
@@ -292,7 +292,49 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+        <?php
+        $benefits = get_posts(['numberposts' => 10, 'post_type' => 'benefits']);
+        foreach ($benefits as $benefit) {
+        ?>
+        <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
+
+            <!-- Heading (remains the same) -->
+            <h2 style="font-size: 1.5rem !important; font-weight: bold !important; margin-bottom: 0.75rem !important;">
+                <?php echo get_the_title($benefit); ?>
+            </h2>
+
+            <!-- Display limited content -->
+            <p class="text-gray-800 text-2xl font-medium mb-10">
+                <?php echo wp_trim_words($benefit->post_content, 20); // Limit to 20 words 
+                    ?>
+            </p>
+
+            <!-- Display limited excerpt -->
+            <p class="text-gray-600 mb-3">
+                <?php echo wp_trim_words(get_the_excerpt($benefit), 10); // Limit to 10 words 
+                    ?>
+            </p>
+
+            <div class="flex justify-end mt-[54px]">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/up-arrow.svg"
+                    class="flex p-[10px] md:p-[14px] justify-center items-center gap-2 rounded-[6px] border border-white-95 bg-white-99"
+                    alt="arrowbutton">
+            </div>
         </div>
+        <?php
+        }
+        ?>
+
+
+
+
+
+
+
+
+
+
     </div>
 
     <div class="container mx-auto px-4 mt-[100px] flex flex-col md:flex-row justify-between">
@@ -485,11 +527,26 @@
         $courses = get_posts(['numberposts' => 10, 'post_type' => 'courses']);
         foreach ($courses as $course) {
         ?>
-        <div class="bg-white p-4 shadow rounded-lg mb-6">
+        <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
             <img src="<?php echo get_the_post_thumbnail_url($course, 'medium'); ?>"
                 class="w-full h-48 object-cover rounded mb-4" />
+            <div class="flex flex-col md:flex-row justify-between my-4">
+                <div class="mb-4">
+                    <span class="rounded-md border border-white-95 bg-white-99 p-2 gap-2.5 items-start">4
+                        Weeks</span>
+                    <span class="rounded-md border border-white-95 bg-white-99 p-2 gap-2.5 items-start">Beginner</span>
+                </div>
+                <div>
+                    <span class="text-base font-medium leading-normal">By John Smith</span>
+                </div>
+            </div>
             <h2 class="text-xl font-bold mb-3"><?php echo get_the_title($course); ?></h2>
             <p class="text-gray-600"><?php echo get_the_excerpt($course); ?></p>
+            <div class="mt-4">
+                <button
+                    class="flex p-3.5 justify-center items-center gap-2 align-self-stretch rounded-md  border-gray-200 bg-white-97 w-full"
+                    type="button">Get it Now</button>
+            </div>
         </div>
         <?php
         }
@@ -514,7 +571,7 @@
 
     </div>
     <div class="mt-4 container mx-auto px-4  grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div class="col ">
+        <!-- <div class="col ">
             <div class="bg-white-99 border-0 rounded-b-none p-10 items-start gap-2 self-stretch ">
                 <p class="text-grey-30  text-base normal-case font-normal leading-6">
                     The web design course provided a solid foundation for me. The instructors were knowledgeable and
@@ -576,30 +633,47 @@
                         type="button">Read Full Story</button>
                 </div>
             </div>
-        </div>
-        <div class="col ">
+        </div> -->
+        <!-- <div class="col ">
             <div class="bg-white-99 border-0 rounded-b-none p-10 items-start gap-2 self-stretch ">
                 <p class="text-grey-30  text-base normal-case font-normal leading-6">
                     I enrolled in the graphic design course as a beginner, and it was the perfect starting point. The
                     instructor's guidance and feedback improved my design abilities significantly. I'm grateful for this
                     course!
             </div>
-            <hr class="border-white-97">
-            <div class="flex justify-between items-center p-3 bg-white-95 rounded-b-lg">
-                <div class="flex items-center">
-                    <img src="<?php echo get_template_directory_uri() ?> ./images/michael.png" alt="sarah"
-                        class="w-10 h-10 rounded-full">
-                    <span class="text-base font-normal font-semibold px-2 leading-6">Michael K</span>
-                </div>
-                <div>
-                    <button
-                        class="flex p-4 px-4 justify-center items-center gap-2 rounded-md border border-white-95 bg-white-97"
+        </div> -->
+        <?php
+$testimonials = get_posts(['numberposts' => 10, 'post_type' => 'testimonials']);
+foreach ($testimonials as $testimonial) {
+    ?>
+    <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
+        <!-- Display limited content (by word count) -->
+        <p class="text-gray-800">
+            <?php echo wp_trim_words($testimonial->post_content, 30, '...'); ?> <!-- Limit to 20 words -->
+        </p>
+        
+        <hr class="border-white-97">
+
+        <!-- Footer with author image and button -->
+        <div class="flex justify-between items-center p-3 bg-white-95 rounded-b-lg">
+            <div class="flex items-center">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/michael.png" alt="Michael"
+                     class="w-10 h-10 rounded-full">
+                <span class="text-base font-semibold px-2 leading-6">Michael K</span>
+            </div>
+
+            <div>
+                <button class="flex p-4 px-4 justify-center items-center gap-2 rounded-md border border-white-95 bg-white-97"
                         type="button">Read Full Story</button>
-                </div>
             </div>
         </div>
     </div>
+<?php
+}
+?>
 
+
+    </div>
     <div class="container mx-auto px-4 mt-[100px] flex flex-col md:flex-row justify-between">
         <div class="w-full md:w-3/4 mb-4 md:mb-0">
             <h3 class="text-[#262626]  text-[38px] font-semibold leading-[150%]">Our Pricing</h3>
