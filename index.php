@@ -655,7 +655,7 @@ foreach ($testimonials as $testimonial) {
         <hr class="border-white-97">
 
         <!-- Footer with author image and button -->
-        <div class="flex justify-between items-center p-3 bg-white-95 rounded-b-lg">
+        <div class="flex justify-between items-center p-3 bg-white-95 rounded-b-lg mt-10">
             <div class="flex items-center">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/michael.png" alt="Michael"
                      class="w-10 h-10 rounded-full">
