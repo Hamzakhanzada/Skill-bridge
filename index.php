@@ -523,6 +523,7 @@
                 </div>
             </div>
         </div> -->
+
         <?php
         $courses = get_posts(['numberposts' => 10, 'post_type' => 'courses']);
         foreach ($courses as $course) {
@@ -550,7 +551,18 @@
         </div>
         <?php
         }
+
         ?>
+        <?php
+        $courseCat = get_terms('course_category');
+
+        if ($courseCat) {
+            foreach ($courseCat as $cat) {
+                echo '<h3>' . $cat->name . '</h3>';
+            }
+        }
+        ?>
+
 
     </div>
 
@@ -643,34 +655,32 @@
             </div>
         </div> -->
         <?php
-$testimonials = get_posts(['numberposts' => 10, 'post_type' => 'testimonials']);
-foreach ($testimonials as $testimonial) {
-    ?>
-    <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
-        <!-- Display limited content (by word count) -->
-        <p class="text-gray-800">
-            <?php echo wp_trim_words($testimonial->post_content, 30, '...'); ?> <!-- Limit to 20 words -->
-        </p>
-        
-        <hr class="border-white-97">
-
-        <!-- Footer with author image and button -->
-        <div class="flex justify-between items-center p-3 bg-white-95 rounded-b-lg mt-10">
-            <div class="flex items-center">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/michael.png" alt="Michael"
-                     class="w-10 h-10 rounded-full">
-                <span class="text-base font-semibold px-2 leading-6">Michael K</span>
-            </div>
-
-            <div>
-                <button class="flex p-4 px-4 justify-center items-center gap-2 rounded-md border border-white-95 bg-white-97"
+        $testimonials = get_posts(['numberposts' => 10, 'post_type' => 'testimonials']);
+        foreach ($testimonials as $testimonial) {
+        ?>
+        <div class="bg-white p-6 shadow rounded-lg mb-6 mx-auto">
+            <p class="text-gray-700 mb-4">
+                <?php echo wp_trim_words($testimonial->post_content, 30, '...'); ?>
+            </p>
+            <div class="flex items-center justify-between bg-white-97">
+                <div class="flex items-center">
+                    <?php echo get_the_post_thumbnail($testimonial, 'thumbnail', ['class' => 'w-10 h-10 rounded-full mr-3']); ?>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-900">
+                            <?php echo ($testimonial->post_title); ?>
+                        </h3>
+                    </div>
+                </div>
+                <div>
+                    <button
+                        class="flex p-4 px-4 justify-center items-center gap-2 rounded-md border border-white-95 bg-white-97"
                         type="button">Read Full Story</button>
+                </div>
             </div>
         </div>
-    </div>
-<?php
-}
-?>
+        <?php
+        }
+        ?>
 
 
     </div>
