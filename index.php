@@ -539,7 +539,6 @@
                         if ($terms) {
                             foreach ($terms as $custom) {
                         ?>
-
                                 <span class="rounded-md border border-white-95 bg-white-99 p-2 gap-2.5 items-start">
                             <?php
                                 echo ($custom->name);
