@@ -7,45 +7,45 @@
     <title>Responsive Tailwind CSS Design</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    tailwind.config = {
-        theme: {
-            colors: {
-                absolute: {
-                    white: '#FFF',
-                    black: '#000',
-                },
-                orange: {
-                    50: '#FF9500',
-                    70: '#FFBF66',
-                    75: '#FFCA80',
-                    80: '#FFD499',
-                    90: '#FFEACC',
-                    95: '#FFF4E5',
-                    97: '#FFF9F0',
-                    99: '#FFFDFA',
-                },
+        tailwind.config = {
+            theme: {
+                colors: {
+                    absolute: {
+                        white: '#FFF',
+                        black: '#000',
+                    },
+                    orange: {
+                        50: '#FF9500',
+                        70: '#FFBF66',
+                        75: '#FFCA80',
+                        80: '#FFD499',
+                        90: '#FFEACC',
+                        95: '#FFF4E5',
+                        97: '#FFF9F0',
+                        99: '#FFFDFA',
+                    },
 
-                white: {
-                    90: '#E4E4E7',
-                    95: '#F1F1F3',
-                    97: '#F7F7F8',
-                    99: '#FCFCFD',
+                    white: {
+                        90: '#E4E4E7',
+                        95: '#F1F1F3',
+                        97: '#F7F7F8',
+                        99: '#FCFCFD',
 
-                },
-                grey: {
-                    10: '#191919',
-                    15: '#262626',
-                    20: '#333333',
-                    30: '#4C4C4D',
-                    35: '#59595A',
-                    40: '#656567',
-                    60: '#98989A',
-                    70: '#B3B3B3'
+                    },
+                    grey: {
+                        10: '#191919',
+                        15: '#262626',
+                        20: '#333333',
+                        30: '#4C4C4D',
+                        35: '#59595A',
+                        40: '#656567',
+                        60: '#98989A',
+                        70: '#B3B3B3'
+                    }
+
                 }
-
             }
         }
-    }
     </script>
 
 </head>
@@ -297,31 +297,31 @@
         $benefits = get_posts(['numberposts' => 10, 'post_type' => 'benefits']);
         foreach ($benefits as $benefit) {
         ?>
-        <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
+            <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
 
-            <!-- Heading (remains the same) -->
-            <h2 style="font-size: 1.5rem !important; font-weight: bold !important; margin-bottom: 0.75rem !important;">
-                <?php echo get_the_title($benefit); ?>
-            </h2>
+                <!-- Heading (remains the same) -->
+                <h2 style="font-size: 1.5rem !important; font-weight: bold !important; margin-bottom: 0.75rem !important;">
+                    <?php echo get_the_title($benefit); ?>
+                </h2>
 
-            <!-- Display limited content -->
-            <p class="text-gray-800 text-2xl font-medium mb-10">
-                <?php echo wp_trim_words($benefit->post_content, 20); // Limit to 20 words 
+                <!-- Display limited content -->
+                <p class="text-gray-800 text-2xl font-medium mb-10">
+                    <?php echo wp_trim_words($benefit->post_content, 20); // Limit to 20 words 
                     ?>
-            </p>
+                </p>
 
-            <!-- Display limited excerpt -->
-            <p class="text-gray-600 mb-3">
-                <?php echo wp_trim_words(get_the_excerpt($benefit), 10); // Limit to 10 words 
+                <!-- Display limited excerpt -->
+                <p class="text-gray-600 mb-3">
+                    <?php echo wp_trim_words(get_the_excerpt($benefit), 10); // Limit to 10 words 
                     ?>
-            </p>
+                </p>
 
-            <div class="flex justify-end mt-[54px]">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/up-arrow.svg"
-                    class="flex p-[10px] md:p-[14px] justify-center items-center gap-2 rounded-[6px] border border-white-95 bg-white-99"
-                    alt="arrowbutton">
+                <div class="flex justify-end mt-[54px]">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/up-arrow.svg"
+                        class="flex p-[10px] md:p-[14px] justify-center items-center gap-2 rounded-[6px] border border-white-95 bg-white-99"
+                        alt="arrowbutton">
+                </div>
             </div>
-        </div>
         <?php
         }
         ?>
@@ -528,38 +528,40 @@
         $courses = get_posts(['numberposts' => 10, 'post_type' => 'courses']);
         foreach ($courses as $course) {
         ?>
-        <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
-            <img src="<?php echo get_the_post_thumbnail_url($course, 'medium'); ?>"
-                class="w-full h-48 object-cover rounded mb-4" />
-            <div class="flex flex-col md:flex-row justify-between my-4">
-                <div class="mb-4">
-                    <span class="rounded-md border border-white-95 bg-white-99 p-2 gap-2.5 items-start">4
-                        Weeks</span>
-                    <span class="rounded-md border border-white-95 bg-white-99 p-2 gap-2.5 items-start">Beginner</span>
+            <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
+                <img src="<?php echo get_the_post_thumbnail_url($course, 'medium'); ?>"
+                    class="w-full h-48 object-cover rounded mb-4" />
+                <div class="flex flex-col md:flex-row justify-between my-4">
+                    <div class="mb-4 flex gap-3">
+                        <?php
+                        $terms = get_the_terms($course->ID, 'courses_tags');
+
+                        if ($terms) {
+                            foreach ($terms as $custom) {
+                        ?>
+
+                                <span class="rounded-md border border-white-95 bg-white-99 p-2 gap-2.5 items-start">
+                            <?php
+                                echo ($custom->name);
+                                echo '</span>';
+                            }
+                        }
+                            ?>
+                    </div>
+
+                    <div>
+                        <span class="text-base font-medium leading-normal">By John Smith</span>
+                    </div>
                 </div>
-                <div>
-                    <span class="text-base font-medium leading-normal">By John Smith</span>
+                <h2 class="text-xl font-bold mb-3"><?php echo get_the_title($course); ?></h2>
+                <p class="text-gray-600"><?php echo get_the_excerpt($course); ?></p>
+                <div class="mt-4">
+                    <button
+                        class="flex p-3.5 justify-center items-center gap-2 align-self-stretch rounded-md  border-gray-200 bg-white-97 w-full"
+                        type="button">Get it Now</button>
                 </div>
             </div>
-            <h2 class="text-xl font-bold mb-3"><?php echo get_the_title($course); ?></h2>
-            <p class="text-gray-600"><?php echo get_the_excerpt($course); ?></p>
-            <div class="mt-4">
-                <button
-                    class="flex p-3.5 justify-center items-center gap-2 align-self-stretch rounded-md  border-gray-200 bg-white-97 w-full"
-                    type="button">Get it Now</button>
-            </div>
-        </div>
         <?php
-        }
-
-        ?>
-        <?php
-        $courseCat = get_terms('course_category');
-
-        if ($courseCat) {
-            foreach ($courseCat as $cat) {
-                echo '<h3>' . $cat->name . '</h3>';
-            }
         }
         ?>
 
@@ -658,26 +660,28 @@
         $testimonials = get_posts(['numberposts' => 10, 'post_type' => 'testimonials']);
         foreach ($testimonials as $testimonial) {
         ?>
-        <div class="bg-white p-6 shadow rounded-lg mb-6 mx-auto">
-            <p class="text-gray-700 mb-4">
-                <?php echo wp_trim_words($testimonial->post_content, 30, '...'); ?>
-            </p>
-            <div class="flex items-center justify-between bg-white-97">
-                <div class="flex items-center">
-                    <?php echo get_the_post_thumbnail($testimonial, 'thumbnail', ['class' => 'w-10 h-10 rounded-full mr-3']); ?>
+            <div>
+                <div class="bg-white p-6 shadow   mx-auto">
+                    <p class="text-gray-700 mb-4">
+                        <?php echo wp_trim_words($testimonial->post_content, 30, '...'); ?>
+                    </p>
+                </div>
+                <div class="flex p-4 items-center justify-between bg-white-95 rounded-bottom ">
+                    <div class="flex items-center">
+                        <?php echo get_the_post_thumbnail($testimonial, 'thumbnail', ['class' => 'w-10 h-10 rounded-full mr-3']); ?>
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-900">
+                                <?php echo ($testimonial->post_title); ?>
+                            </h3>
+                        </div>
+                    </div>
                     <div>
-                        <h3 class="text-sm font-semibold text-gray-900">
-                            <?php echo ($testimonial->post_title); ?>
-                        </h3>
+                        <button
+                            class="flex p-4 px-4 justify-center items-center gap-2 rounded-md border border-white-95 bg-white-97"
+                            type="button">Read Full Story</button>
                     </div>
                 </div>
-                <div>
-                    <button
-                        class="flex p-4 px-4 justify-center items-center gap-2 rounded-md border border-white-95 bg-white-97"
-                        type="button">Read Full Story</button>
-                </div>
             </div>
-        </div>
         <?php
         }
         ?>
