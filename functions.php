@@ -46,10 +46,10 @@ function register_courses_tags() {
     register_taxonomy(
         'courses_tags',
         'courses', 
-        array(
+        array(     
             'label'             => __('Course Tags'),
             'rewrite'           => array('slug' => 'courses-tags'), 
-            'hierarchical'      => false,
+            'hierarchical'      => true,
             'show_ui'           => true,
             'show_admin_column' => true, // Display in the admin columns
             'query_var'         => true, // Enable query variable
@@ -80,41 +80,9 @@ function create_course_category_taxonomy()
 }
 add_action('init', 'create_course_category_taxonomy');
 
-function create_benefit_category_taxonomy()
-{
-	register_taxonomy(
-		'benefit_category',
-		'benefits',
-		array(
-			'labels' => array(
-				'name'              => __('Benefit Categories'),
-				'singular_name'     => __('Benefit Category'),
-			),
-			'hierarchical'      => true,
-			'public'            => true,
-			'show_ui'           => true,
-			'show_in_nav_menus' => true,
-			'show_admin_column' => true,
-			'rewrite'           => array('slug' => 'benefit-category'),
-		)
-	);
-}
-add_action('init', 'create_benefit_category_taxonomy');
 
 
-register_post_type(
-	'benefits',
-	array(
-		'labels'      => array(
-			'name'          => __('Benefits'),
-			'singular_name' => __('Benefits'),
-		),
-		'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt',),
 
-		'public'      => true,
-		'has_archive' => true,
-	)
-);
  
 function create_testimonial_category_taxonomy()
 {
