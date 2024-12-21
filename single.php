@@ -21,10 +21,8 @@
     </div>
 
     <div class="relative mb-8">
-        <?php if (has_post_thumbnail()) : ?>
         <img src="<?php the_post_thumbnail_url('default'); ?>" alt="<?php the_title(); ?>"
             class="w-full rounded-lg object-cover">
-        <?php endif; ?>
     </div>
 
     <div class="max-w-7xl mx-auto p-4">
@@ -66,7 +64,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="bg-white p-6 shadow rounded-lg">
                 <h2 class="text-5xl font-bold text-end text-gray-800 mb-4">02</h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-6">User Research and Analysis</h3>
