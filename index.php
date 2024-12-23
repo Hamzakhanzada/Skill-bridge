@@ -294,21 +294,19 @@
             </div>
         </div> -->
         <?php
-        // Fetch all posts from the 'benefit' post type
         $benefits = get_posts(array(
-            'post_type' => 'benefit', // Custom post type 'benefit'
-            'posts_per_page' => -1    // Fetch all posts
+            'post_type' => 'benefit', 
+            'posts_per_page' => -1    
         ));
-
         foreach ($benefits as $post) {
             $card_number = get_post_meta($post->ID, 'card_number', true);
             $card_title = get_post_meta($post->ID, 'card_title', true);
             $card_description = get_post_meta($post->ID, 'card_description', true);
         ?>
             <div class="card bg-white shadow-lg rounded-lg p-6 mb-8">
-                <span class="card-number text-lg font-semibold flex justify-end"><?php echo $card_number; ?></span>
-                <h3 class="card-title text-2xl font-bold text-center mb-2"><?php echo $card_title; ?></h3>
-                <p class="card-description text-gray-700 text-center mb-4"><?php echo $card_description; ?></p>
+                <span class="card-number text-3xl font-semibold flex justify-end"><?php echo $card_number; ?></span>
+                <h3 class="card-title text-2xl font-bold  mb-2"><?php echo $card_title; ?></h3>
+                <p class="card-description text-gray-700  mb-4"><?php echo $card_description; ?></p>
                 <div class="flex justify-end mt-[54px]">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/up-arrow.svg"
                         class="flex p-[10px] md:p-[14px] justify-center items-center gap-2 rounded-[6px] border border-white-95 bg-white-99"
@@ -318,18 +316,7 @@
         <?php
         }
         ?>
-
-
-
-
-
-
-
-
-
-
     </div>
-
     <div class="container mx-auto px-4 mt-[100px] flex flex-col md:flex-row justify-between">
         <div class="w-full md:w-3/4 mb-4 md:mb-0">
             <h3 class="text-[#262626]  text-[38px] font-semibold leading-[150%]">Our Courses</h3>
@@ -344,7 +331,6 @@
                 class="rounded-[6px] pt-[14px] pb-[14px] pl-[20px] pr-[20px]  border border-white-95 bg-white-99 text-grey-15 text-center font-be-vietnam-pro text-[14px] md:text-[16px] lg:text-[18px] font-medium leading-[150%]">View
                 All</button>
         </div>
-
     </div>
     <div class="mt-4 container mx-auto px-4 grid grid-cols-1 gap-4 md:grid-cols-2">
         <!-- <div class="col">
@@ -499,7 +485,7 @@
                                 Weeks</span>
                             <span
                                 class="rounded-md border border-white-95 bg-white-99 p-2 gap-2.5 items-start">Advance</span>
-                        </div>
+                          </div>
                         <div>
                             <span class="text-base font-medium leading-normal">By Jennifer Wilson</span>
                         </div>
@@ -548,11 +534,12 @@
                 <h2 class="text-xl font-bold mb-3"><?php echo get_the_title($course); ?></h2>
                 <p class="text-gray-600"><?php echo get_the_excerpt($course); ?></p>
                 <div class="mt-4">
-                    <a href="<?php echo get_permalink($course->ID); ?>"
+                    <a href="<?php the_permalink($course->ID); ?>"
                         class="flex p-3.5 justify-center items-center gap-2 align-self-stretch rounded-md border-gray-200 bg-white-97 w-full"
                         type="button">Get it Now</a>
 
                 </div>
+               
             </div>
         <?php
         }
