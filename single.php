@@ -1,4 +1,4 @@
-<?php echo get_header()?>
+<?php echo get_header() ?>
 
 <div class="max-w-7xl mx-auto px-4 py-8">
     <?php if (have_posts()) : ?>
@@ -27,80 +27,71 @@
 
     <div class="max-w-7xl mx-auto p-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <?php
+            // Fetch posts from 'course-modules' post type
+            $course_modules = get_posts(array(
+                'post_type' => 'course-modules',
+                'posts_per_page' => -1  // Show all posts
+            ));
+
+            foreach ($course_modules as $post) {
+                setup_postdata($post);
+
+                // Get custom fields
+                $section_number = get_post_meta($post->ID, 'section_number', true);
+                $section_title = get_post_meta($post->ID, 'section_title', true);
+                $lesson_1_title = get_post_meta($post->ID, 'lesson_1_title', true);
+                $lesson_1_subtitle = get_post_meta($post->ID, 'lesson_1_subtitle', true);
+                $lesson_1_duration = get_post_meta($post->ID, 'lesson_1_duration', true);
+
+                $lesson_2_title = get_post_meta($post->ID, 'lesson_2_title', true);
+                $lesson_2_subtitle = get_post_meta($post->ID, 'lesson_2_subtitle', true);
+                $lesson_2_duration = get_post_meta($post->ID, 'lesson_2_duration', true);
+
+                $lesson_3_title = get_post_meta($post->ID, 'lesson_3title', true);
+                $lesson_3_subtitle = get_post_meta($post->ID, 'lesson_3_subtitle', true);
+                $lesson_3_duration = get_post_meta($post->ID, 'lesson_3_duration', true);
+            ?>
             <div class="bg-white p-6 shadow rounded-lg">
-                <h2 class="text-5xl font-bold text-end text-gray-800 mb-4">01</h2>
-                <h3 class="text-lg font-semibold text-gray-700 mb-6">Introduction to UI/UX Design</h3>
+                <h2 class="text-5xl font-bold text-end text-gray-800 mb-4"><?php echo ($section_number); ?></h2>
+                <h3 class="text-lg font-semibold text-gray-700 mb-6"><?php echo ($section_title); ?></h3>
 
                 <div class="space-y-4">
-                    <div class="flex justify-between items-center p-4 border border-grey-70  rounded-lg">
+                    <div class="flex justify-between items-center p-4 border border-grey-70 rounded-lg">
                         <div>
-                            <p class="text-gray-700 font-medium">Understanding UI/UX Design Principles</p>
-                            <p class="text-sm text-gray-500">Lesson 01</p>
+                            <p class="text-gray-700 font-medium"><?php echo ($lesson_1_title); ?></p>
+                            <p class="text-sm text-gray-500"><?php echo ($lesson_1_subtitle); ?></p>
                         </div>
                         <div class="text-gray-600 text-sm flex items-center">
-                            &#9201; 45 Minutes
+                            &#9201; <?php echo ($lesson_1_duration); ?>
                         </div>
                     </div>
-
-                    <div
-                        class="flex justify-between items-center p-4 border  border-orange-50 shadow shadow-orange-50/40  rounded-lg ">
+                    <div class="flex justify-between items-center p-4 border border-grey-70 rounded-lg">
                         <div>
-                            <p class="text-gray-700 font-medium">Importance of User-Centered Design</p>
-                            <p class="text-sm text-gray-500">Lesson 02</p>
+                            <p class="text-gray-700 font-medium"><?php echo ($lesson_2_title); ?></p>
+                            <p class="text-sm text-gray-500"><?php echo ($lesson_2_subtitle); ?></p>
                         </div>
-                        <div class="border border-yellow-300 text-yellow-800 px-3 py-1 text-sm rounded">
-                            1 Hour
+                        <div class="text-gray-600 text-sm flex items-center">
+                            &#9201; <?php echo ($lesson_2_duration); ?>
                         </div>
                     </div>
 
                     <div class="flex justify-between items-center p-4 border border-grey-70 rounded-lg">
                         <div>
-                            <p class="text-gray-700 font-medium">The Role of UI/UX Design in Product Development</p>
-                            <p class="text-sm text-gray-500">Lesson 03</p>
+                            <p class="text-gray-700 font-medium"><?php echo ($lesson_3_title); ?></p>
+                            <p class="text-sm text-gray-500"><?php echo ($lesson_3_subtitle); ?></p>
                         </div>
                         <div class="text-gray-600 text-sm flex items-center">
-                            &#9201; 45 Minutes
+                            &#9201; <?php echo ($lesson_3_duration); ?>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-6 shadow rounded-lg">
-                <h2 class="text-5xl font-bold text-end text-gray-800 mb-4">02</h2>
-                <h3 class="text-lg font-semibold text-gray-700 mb-6">User Research and Analysis</h3>
-
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center p-4 border border-grey-70  rounded-lg">
-                        <div>
-                            <p class="text-gray-700 font-medium">Conducting User Research and Interviews</p>
-                            <p class="text-sm text-gray-500">Lesson 01</p>
-                        </div>
-                        <div class="bg-yellow-200 text-yellow-800 px-3 py-1 text-sm rounded">
-                            1 Hour
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between items-center p-4 border border-grey-70  rounded-lg">
-                        <div>
-                            <p class="text-gray-700 font-medium">Analyzing User Needs and Behavior</p>
-                            <p class="text-sm text-gray-500">Lesson 02</p>
-                        </div>
-                        <div class="bg-yellow-200 text-yellow-800 px-3 py-1 text-sm rounded">
-                            1 Hour
-                        </div>
-                    </div>
-
-                    <div class="flex justify-between items-center p-4 border border-grey-70  rounded-lg">
-                        <div>
-                            <p class="text-gray-700 font-medium">Creating User Personas and Scenarios</p>
-                            <p class="text-sm text-gray-500">Lesson 03</p>
-                        </div>
-                        <div class="text-gray-600 text-sm flex items-center">
-                            &#9201; 45 Minutes
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
         </div>
+
     </div>
     <?php  ?>
 </div>
