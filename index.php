@@ -438,7 +438,7 @@
                     <p class="text-[16px] font-normal leading-[150%] text-grey-30 mt-[10px]">Discover the fundamentals
                         of graphic design, including typography, color theory, layout design, and image manipulation
                         techniques. Create visually stunning designs for print and digital media.</p>
-                    <div class="mt-4">
+                        <div class="mt-4">
                         <button
                             class="flex p-3.5 justify-center items-center gap-2 align-self-stretch rounded-md  border-gray-200 bg-white-97 w-full"
                             type="button">Get it Now</button>
