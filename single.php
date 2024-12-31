@@ -28,32 +28,35 @@
     <div class="max-w-7xl mx-auto p-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <?php
-            // Fetch posts from 'course-modules' post type
-            $course_modules = get_posts(array(
-                'post_type' => 'course-modules',
-                'posts_per_page' => -1  // Show all posts
-            ));
+    // Fetch posts from 'course-modules' post type
+    $course_modules = get_posts(array(
+        'post_type' => 'course-modules',
+        'posts_per_page' => -1,  // Show all posts
+        'meta_key' => 'section_number', // Meta key to sort by
+         'orderby' => 'meta_value_num', // Sort numerically (assuming section_number is a number)
+         'order' => 'ASC' 
+    ));
 
-            foreach ($course_modules as $post) {
-                setup_postdata($post);
+    foreach ($course_modules as $post) {
+        setup_postdata($post);
 
-                // Get custom fields
-                $section_number = get_post_meta($post->ID, 'section_number', true);
-                $section_title = get_post_meta($post->ID, 'section_title', true);
-                $lesson_1_title = get_post_meta($post->ID, 'lesson_1_title', true);
-                $lesson_1_subtitle = get_post_meta($post->ID, 'lesson_1_subtitle', true);
-                $lesson_1_duration = get_post_meta($post->ID, 'lesson_1_duration', true);
+        // Get custom fields
+        $section_number = get_post_meta($post->ID, 'section_number', true);
+        $section_title = get_post_meta($post->ID, 'section_title', true);
+        $lesson_1_title = get_post_meta($post->ID, 'lesson_1_title', true);
+        $lesson_1_subtitle = get_post_meta($post->ID, 'lesson_1_subtitle', true);
+        $lesson_1_duration = get_post_meta($post->ID, 'lesson_1_duration', true);
 
-                $lesson_2_title = get_post_meta($post->ID, 'lesson_2_title', true);
-                $lesson_2_subtitle = get_post_meta($post->ID, 'lesson_2_subtitle', true);
-                $lesson_2_duration = get_post_meta($post->ID, 'lesson_2_duration', true);
+        $lesson_2_title = get_post_meta($post->ID, 'lesson_2_title', true);
+        $lesson_2_subtitle = get_post_meta($post->ID, 'lesson_2_subtitle', true);
+        $lesson_2_duration = get_post_meta($post->ID, 'lesson_2_duration', true);
 
-                $lesson_3_title = get_post_meta($post->ID, 'lesson_3title', true);
-                $lesson_3_subtitle = get_post_meta($post->ID, 'lesson_3_subtitle', true);
-                $lesson_3_duration = get_post_meta($post->ID, 'lesson_3_duration', true);
-            ?>
+        $lesson_3_title = get_post_meta($post->ID, 'lesson_3title', true);
+        $lesson_3_subtitle = get_post_meta($post->ID, 'lesson_3_subtitle', true);
+        $lesson_3_duration = get_post_meta($post->ID, 'lesson_3_duration', true);
+    ?>
             <div class="bg-white p-6 shadow rounded-lg">
-                <h2 class="text-5xl font-bold text-end text-gray-800 mb-4"><?php echo ($section_number); ?></h2>
+                <h2 class="text-5xl font-bold text-end text-gray-800 mb-4"><?php echo($section_number); ?></h2>
                 <h3 class="text-lg font-semibold text-gray-700 mb-6"><?php echo ($section_title); ?></h3>
 
                 <div class="space-y-4">
@@ -88,8 +91,8 @@
                 </div>
             </div>
             <?php
-            }
-            ?>
+    }
+    ?>
         </div>
 
     </div>
