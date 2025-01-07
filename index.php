@@ -295,8 +295,11 @@
         </div> -->
         <?php
         $benefits = get_posts(array(
-            'post_type' => 'benefit', 
-            'posts_per_page' => -1    
+            'post_type' => 'benefit',
+            'posts_per_page' => -1,
+            'orderby' => 'menu_order', // Sort by the order you set
+            'order' => 'ASC' // Ascending order (small to large)
+
         ));
         foreach ($benefits as $post) {
             $card_number = get_post_meta($post->ID, 'card_number', true);
@@ -327,9 +330,9 @@
             </h6>
         </div>
         <div class="flex pt-[14px] pb-[14px] pl-[20px] pr-[20px] justify-center items-center gap-2">
-            <button type="button"
+            <a href="<?php echo get_post_type_archive_link('courses'); ?>" type="button"
                 class="rounded-[6px] pt-[14px] pb-[14px] pl-[20px] pr-[20px]  border border-white-95 bg-white-99 text-grey-15 text-center font-be-vietnam-pro text-[14px] md:text-[16px] lg:text-[18px] font-medium leading-[150%]">View
-                All</button>
+                All</a>
         </div>
     </div>
     <div class="mt-4 container mx-auto px-4 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -504,7 +507,7 @@
         </div> -->
 
         <?php
-        $courses = get_posts(['numberposts' => 10, 'post_type' => 'courses']);
+        $courses = get_posts(['numberposts' => 10, 'post_type' => 'courses', 'orderby' => 'menu_order', 'order' => 'ASC']);
         foreach ($courses as $course) {
         ?>
             <div class="bg-white-99 p-4 shadow rounded-lg mb-6">
@@ -539,7 +542,7 @@
                         type="button">Get it Now</a>
 
                 </div>
-               
+
             </div>
         <?php
         }
@@ -677,11 +680,15 @@
                 dignissim lorem nibh et. Ac cum eget habitasse in velit fringilla feugiat senectus in.
             </h6>
         </div>
-        <div class="flex pt-[14px] pb-[14px] pl-[20px] pr-[20px] justify-center items-center gap-2">
-            <button type="button"
-                class="rounded-[6px] pt-[14px] pb-[14px] pl-[20px] pr-[20px]  border border-white-95 bg-white-99 text-grey-15 text-center font-be-vietnam-pro text-[14px] md:text-[16px] lg:text-[18px] font-medium leading-[150%]">View
-                All</button>
-        </div>
+        <span class="flex items-center justify-center bg-absolute-white h-16 w-48 rounded-lg">
+                <button class="py-3 text-absolute-white bg-orange-50 px-5 rounded-lg">
+                    Monthly
+                </button>
+                <button class="py-3 px-5 text-gray-30">
+                    Yearly
+                </button>
+            </span>
+
 
     </div>
     <div class="container mx-auto my-4">
