@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 echo get_header()
 
 ?>
@@ -331,4 +331,4 @@ echo get_header()
 </div>
 <?php
 echo get_footer();
-?>
+?> -->
