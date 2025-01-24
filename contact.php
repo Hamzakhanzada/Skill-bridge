@@ -85,3 +85,12 @@ get_header()
 <?php
 get_footer()
 ?>
+
+
+ First Name: [text* first-name placeholder "Enter First Name"]
+Last Name: [text* last-name placeholder "Enter Last Name"]
+Email: [email* your-email placeholder "Enter your Email"]
+Phone: [tel* phone-number placeholder "Enter Phone Number"]
+Subject: [text* subject placeholder "Enter your Subject"]
+Message: [textarea* your-message placeholder "Enter your Message here..."]
+[submit "Send Your Message"] 
