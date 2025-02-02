@@ -5,23 +5,27 @@ echo get_header();
 <div class="bg-white-99 shadow-lg rounded-lg p-20 lg:flex lg:space-x-6">
     <!-- Contact Form -->
     <div class="lg:w-2/3">
-        <?php echo do_shortcode('[contact-form-7 id="769f8d6" title="Contact form 1"]'); ?>
+        <?php echo do_shortcode('[contact-form-7 id="5b8fa38" title="contact form 2"]'); ?>
     </div>
     <!-- Contact Details -->
     <div class="lg:w-1/3 mt-6 lg:mt-0 space-y-4">
-        <div class="flex flex-col justify-center items-center gap-5 p-7 flex-[1_0_0] self-stretch rounded-lg border border-white-95 bg-white-97">
+        <div
+            class="flex flex-col justify-center items-center gap-5 p-7 flex-[1_0_0] self-stretch rounded-lg border border-white-95 bg-white-97">
             <img src="<?php echo get_template_directory_uri() ?>/images/message-button.png" alt="">
             <span class="text-gray-700">support@skillbridge.com</span>
         </div>
-        <div class="flex flex-col justify-center items-center gap-5 p-7 flex-[1_0_0] self-stretch rounded-lg border border-white-95 bg-white-97">
+        <div
+            class="flex flex-col justify-center items-center gap-5 p-7 flex-[1_0_0] self-stretch rounded-lg border border-white-95 bg-white-97">
             <img src="<?php echo get_template_directory_uri() ?>/images/call-button.png" alt="">
             <span class="text-gray-700">+91 00000 00000</span>
         </div>
-        <div class="flex flex-col justify-center items-center gap-5 p-7 flex-[1_0_0] self-stretch rounded-lg border border-white-95 bg-white-97">
+        <div
+            class="flex flex-col justify-center items-center gap-5 p-7 flex-[1_0_0] self-stretch rounded-lg border border-white-95 bg-white-97">
             <img src="<?php echo get_template_directory_uri() ?>/images/map.png" alt="">
             <span class="text-gray-700">Somewhere in the World</span>
         </div>
-        <div class="flex flex-col justify-center items-center gap-5 p-7 flex-[1_0_0] self-stretch rounded-lg border border-white-95 bg-white-97">
+        <div
+            class="flex flex-col justify-center items-center gap-5 p-7 flex-[1_0_0] self-stretch rounded-lg border border-white-95 bg-white-97">
             <div class="flex gap-4">
                 <img src="<?php echo get_template_directory_uri() ?>/images/facebook.png" alt="">
                 <img src="<?php echo get_template_directory_uri() ?>/images/twitter.png" alt="">
@@ -94,7 +98,7 @@ echo get_header();
 
     .wpcf7-form input[type="submit"]:hover {
         background-color: #ea580c;
-        
+
     }
 </style>
 
